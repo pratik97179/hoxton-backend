@@ -1,22 +1,22 @@
-function success(res, statusCode, data = null, message = 'OK') {
+function success(res, statusCode, data = null, message = "OK") {
     return res.status(statusCode).json({
-      success: true,
-      message,
-      data,
-      error: null,
+        success: true,
+        message,
+        data,
+        error: null,
     });
-  }
-  
-  function failure(res, statusCode, message, errorCode, data = null) {
+}
+
+function failure(res, statusCode, message, errorCode, data = null) {
     return res.status(statusCode).json({
-      success: false,
-      message,
-      data,
-      error: errorCode || message,
+        success: false,
+        message,
+        data,
+        error: errorCode || message,
     });
-  }
-  
-  module.exports = {
+}
+
+module.exports = {
     success,
     failure,
-  };
+};

@@ -5,6 +5,7 @@ Email/password authentication backend for the **hoxton_task** Flutter app.
 ## Stack
 
 - Node.js + Express
+- SQLite (sql.js — schema created on first run)
 
 ## Setup
 

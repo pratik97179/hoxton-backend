@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { PORT } = require("./config");
 const authRoutes = require("./routes/auth.routes");
+const homeRoutes = require("./routes/home.routes");
 const { init, getDb, persist } = require("./db/connection");
 const response = require("./utils/response");
 
@@ -18,6 +19,7 @@ async function start() {
     app.use(express.json({ limit: "10kb" }));
 
     app.use("/auth", authRoutes);
+    app.use("/home", homeRoutes);
 
     app.get("/health", (req, res) => {
         return response.success(res, 200, { status: "ok" }, "Health check ok");

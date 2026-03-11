@@ -1,6 +1,8 @@
 const userRepository = require("../db/userRepository");
+const homeRepository = require("../db/homeRepository");
 const passwordService = require("../services/passwordService");
 const jwtService = require("../services/jwtService");
+const { buildDummyHomeData } = require("../data/dummyHomeData");
 const response = require("../utils/response");
 
 function defaultNameFromEmail(email) {
@@ -44,6 +46,9 @@ async function register(req, res) {
         passwordHash,
         name,
     });
+
+    const dummyHome = buildDummyHomeData(user);
+    homeRepository.create(user.id, dummyHome);
 
     const accessToken = jwtService.signAccessToken({ userId: user.id });
     const expiresIn = jwtService.getAccessExpiresInSeconds();
